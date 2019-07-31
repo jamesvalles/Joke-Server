@@ -1,0 +1,474 @@
+
+James Valles (Joke Log for Joke Server Project)
+
+The following is snippets out output from console. I have separate them under different categories and added notes where need. Thank you.
+
+
+*** Commentary: Eight jokes, Eight proverbs tested. Here is what prints out on Joke Client. Note how name substituted into joke templates and type name in once.***
+
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeClient localhost localhost
+James Valles' Joke Client
+Server one: localhost, port 4545. JokeClientAdmin running at port 5050.
+Server two: localhost, port 4546. JokeClientAdmin running at port 5051.
+
+Hi! Please enter your name to begin program.
+James
+
+*** Commentary: All Jokes / Proverbs seen before repeated. Note Jokes/Provers labelled JA, PA, etc. 
+
+JB James: Why do programmers always mix up Halloween and Christmas? Because Oct 31 equals Dec 25.
+
+JA James: How did the programmer die in the shower? He read the shampoo bottle instructions: Lather. Rinse. Repeat.
+
+JC James: How many programmers does it take to change a light bulb? None – It’s a hardware problem.
+
+JD James: Why do Java programmers wear glasses? They can't C#.
+
+JOKE CYCLE COMPLETED
+
+JD James: Why do Java programmers wear glasses? They can't C#.
+
+JA James: How did the programmer die in the shower? He read the shampoo bottle instructions: Lather. Rinse. Repeat.
+
+JB James: Why do programmers always mix up Halloween and Christmas? Because Oct 31 equals Dec 25.
+
+JC James: How many programmers does it take to change a light bulb? None – It’s a hardware problem.
+
+JOKE CYCLE COMPLETED << Commentary: Notice randomness of jokes JB, JA, JC, JD and then second run JD, JA, JB, JC
+
+
+JA James: How did the programmer die in the shower? He read the shampoo bottle instructions: Lather. Rinse. Repeat.
+
+PA James: Early to bed and early to rise, makes a man healthy, wealthy and wise.
+
+PB James: It's no use locking the stable door after the horse has bolted.
+
+PC James: Laugh and the world laughs with you, weep and you weep alone.
+
+PD James: See a pin and pick it up, all the day you'll have good luck; see a pin and let it lie, bad luck you'll have all day.
+
+
+PROVERB CYCLE COMPLETED << Commentary: Notice how it will cycle through all jokes or proverbs before cycle completing.
+
+PB James: It's no use locking the stable door after the horse has bolted.
+
+PA James: Early to bed and early to rise, makes a man healthy, wealthy and wise.
+
+PC James: Laugh and the world laughs with you, weep and you weep alone.
+
+PD James: See a pin and pick it up, all the day you'll have good luck; see a pin and let it lie, bad luck you'll have all day.
+
+PROVERB CYCLE COMPLETED
+
+
+***Commentary: This is the way it looks on Server console. Each time system retrieves a joke, proverb, it prints joke/proverb on client, and 'Getting your ..' on server console***
+
+<<Commentary: All Jokes / Proverbs seen before repeated. Note: Jokes/Provers labelled JA, PA, etc. 
+
+
+Getting your Joke, James! << Commentary, this prints on server console each time joke is sent 
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+
+JOKE CYCLE COMPLETED
+
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+
+JOKE CYCLE COMPLETED
+
+Switched mode, currently in Proverb mode. << Commentary: Changed Joke mode to Proverb mode here. 
+Getting your Proverb, James!   <Commentary: This printed getting your proverb, because I hit enter, but joke actually gets shown on client.
+
+Getting your Proverb, James!
+Getting your Proverb, James!
+Getting your Proverb, James!
+Getting your Proverb, James!
+
+PROVERB CYCLE COMPLETED
+
+Getting your Proverb, James! 
+Getting your Proverb, James! << Commentary, this prints on server console each time proverb is sent 
+Getting your Proverb, James!
+Getting your Proverb, James!
+
+PROVERB CYCLE COMPLETED
+
+
+
+
+***JokeAdminClient connecting a different ports. Depending on toggling 's'. ***
+
+
+James Valles' JokeClientAdmin
+Server one: localhost, port 4545. JokeClientAdmin running at port 5050.
+Server two: localhost, port 4546. JokeClientAdmin running at port 5051.
+
+Press return key to switch modes, or 's' to toggle servers, or type 'quit' to terminate program.
+
+Switched mode, currently in Proverb mode.
+s
+Now communicating with localhost, port 4546.
+s
+Now communicating with localhost, port 4545.
+s
+Now communicating with localhost, port 4546.
+
+
+
+
+***JokeClientAdmin switches server mode -  Joke/Proberb Mode, here is what appears on Primary Server & Secondary Server (maintains conversations)***
+
+James Valles' JokeClientAdmin
+Server one: localhost, port 4545. JokeClientAdmin running at port 5050.
+Server two: localhost, port 4546. JokeClientAdmin running at port 5051.
+
+Press return key to switch modes, or 's' to toggle servers, or type 'quit' to terminate program.
+
+Switched mode, currently in Proverb mode.
+s
+Now communicating with localhost, port 4546.
+s
+Now communicating with localhost, port 4545.
+s
+Now communicating with localhost, port 4546.
+
+Switched mode, currently in Proverb mode. <<Commentary began switching mode on secondary server, port 4546 here 
+
+Switched mode, currently in Joke mode.
+
+Switched mode, currently in Proverb mode.
+
+s
+Now communicating with localhost, port 4545.
+
+Switched mode, currently in Joke mode.
+
+Switched mode, currently in Proverb mode.
+
+
+<<Commentary: This is what appears on secondary server when toggling joke mode (below)
+
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeServer secondary 
+
+James Valles' Joke Server running.
+Server two: localhost, port 4546. JokeClientAdmin using port 5051.
+
+Started in Joke mode.
+Switched mode, currently in Proverb mode.
+Switched mode, currently in Joke mode.
+Switched mode, currently in Proverb mode.
+
+
+>>Commentary: this is what appears on primary server 
+
+Switched mode, currently in Joke mode.
+Switched mode, currently in Proverb mode.
+
+
+***JokeClient toggling between Primary Server & Secondary Server, here is what appears on JokeClient.***
+
+
+PB James: It's no use locking the stable door after the horse has bolted.
+s <<Commentary: enter 's' to change servers 
+Now communicating with localhost, port 4546.
+<S2> PA James: Early to bed and early to rise, makes a man healthy, wealthy and wise. <<Commentary: notice <S2> appears when server is changed, and port changes
+
+<S2> PB James: It's no use locking the stable door after the horse has bolted.
+
+<S2> PC James: Laugh and the world laughs with you, weep and you weep alone.
+s
+Now communicating with localhost, port 4545.
+PA James: Early to bed and early to rise, makes a man healthy, wealthy and wise. <<Commentary when server changed, back to port 4545, <S2> disappears
+
+PC James: Laugh and the world laughs with you, weep and you weep alone.
+
+PD James: See a pin and pick it up, all the day you'll have good luck; see a pin and let it lie, bad luck you'll have all day.
+s
+Now communicating with localhost, port 4546.
+<S2> PD James: See a pin and pick it up, all the day you'll have good luck; see a pin and let it lie, bad luck you'll have all day.
+
+PROVERB CYCLE COMPLETED
+
+
+***Multiple servers: interleaved joke/proverb conversations on primary/secondary servers correct***
+
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeClient localhost localhost
+James Valles' Joke Client
+Server one: localhost, port 4545. JokeClientAdmin running at port 5050.
+Server two: localhost, port 4546. JokeClientAdmin running at port 5051.
+
+Hi! Please enter your name to begin program.
+James
+
+To receive something always press return key, to toggle server type 's', or type 'quit' to exit program.
+
+JA James: How did the programmer die in the shower? He read the shampoo bottle instructions: Lather. Rinse. Repeat.
+
+JB James: Why do programmers always mix up Halloween and Christmas? Because Oct 31 equals Dec 25.
+
+JC James: How many programmers does it take to change a light bulb? None – It’s a hardware problem.
+
+JD James: Why do Java programmers wear glasses? They can't C#.
+
+JOKE CYCLE COMPLETED
+
+JD James: Why do Java programmers wear glasses? They can't C#.
+
+PA James: Early to bed and early to rise, makes a man healthy, wealthy and wise.
+
+PB James: It's no use locking the stable door after the horse has bolted.
+
+PC James: Laugh and the world laughs with you, weep and you weep alone.
+
+PD James: See a pin and pick it up, all the day you'll have good luck; see a pin and let it lie, bad luck you'll have all day.
+
+PROVERB CYCLE COMPLETED
+
+PA James: Early to bed and early to rise, makes a man healthy, wealthy and wise.
+
+JB James: Why do programmers always mix up Halloween and Christmas? Because Oct 31 equals Dec 25.
+
+JC James: How many programmers does it take to change a light bulb? None – It’s a hardware problem.
+
+JD James: Why do Java programmers wear glasses? They can't C#.
+
+JOKE CYCLE COMPLETED
+
+JD James: Why do Java programmers wear glasses? They can't C#.
+
+PA James: Early to bed and early to rise, makes a man healthy, wealthy and wise.
+
+PB James: It's no use locking the stable door after the horse has bolted.
+
+PC James: Laugh and the world laughs with you, weep and you weep alone.
+
+PROVERB CYCLE COMPLETED
+
+PB James: It's no use locking the stable door after the horse has bolted.
+s 
+Now communicating with localhost, port 4546.
+<S2> JA James: How did the programmer die in the shower? He read the shampoo bottle instructions: Lather. Rinse. Repeat.
+
+<S2> JB James: Why do programmers always mix up Halloween and Christmas? Because Oct 31 equals Dec 25.
+
+<S2> JC James: How many programmers does it take to change a light bulb? None – It’s a hardware problem.
+
+<S2> JD James: Why do Java programmers wear glasses? They can't C#.
+
+JOKE CYCLE COMPLETED
+
+<S2> JD James: Why do Java programmers wear glasses? They can't C#.
+
+<S2> PA James: Early to bed and early to rise, makes a man healthy, wealthy and wise.
+
+<S2> PB James: It's no use locking the stable door after the horse has bolted.
+
+<S2> PC James: Laugh and the world laughs with you, weep and you weep alone.
+
+<S2> PD James: See a pin and pick it up, all the day you'll have good luck; see a pin and let it lie, bad luck you'll have all day.
+
+PROVERB CYCLE COMPLETED
+
+<S2> PD James: See a pin and pick it up, all the day you'll have good luck; see a pin and let it lie, bad luck you'll have all day.
+
+<S2> JA James: How did the programmer die in the shower? He read the shampoo bottle instructions: Lather. Rinse. Repeat.
+
+<S2> JB James: Why do programmers always mix up Halloween and Christmas? Because Oct 31 equals Dec 25.
+
+<S2> JC James: How many programmers does it take to change a light bulb? None – It’s a hardware problem.
+
+JOKE CYCLE COMPLETED
+
+<S2> JB James: Why do programmers always mix up Halloween and Christmas? Because Oct 31 equals Dec 25.
+
+
+***JokeClientAdmin Interleaved ***
+
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeClientAdmin localhost localhost
+James Valles' JokeClientAdmin
+Server one: localhost, port 4545. JokeClientAdmin running at port 5050.
+Server two: localhost, port 4546. JokeClientAdmin running at port 5051.
+
+Press return key to switch modes, or 's' to toggle servers, or type 'quit' to terminate program.
+
+Switched mode, currently in Proverb mode.
+
+Switched mode, currently in Joke mode.
+
+Switched mode, currently in Proverb mode.
+ 
+Switched mode, currently in Joke mode.
+
+Switched mode, currently in Proverb mode.
+
+Switched mode, currently in Joke mode.
+s
+Now communicating with localhost, port 4546.
+
+Switched mode, currently in Proverb mode.
+
+Switched mode, currently in Joke mode.
+
+
+***Primary Server Interleaved***
+
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeServer
+James Valles' Joke Server running.
+Server one: localhost, port 4545. JokeClientAdmin using port 5050.
+
+Started in Joke mode.
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+
+JOKE CYCLE COMPLETED
+
+Switched mode, currently in Proverb mode.
+Getting your Proverb, James!
+Getting your Proverb, James!
+Getting your Proverb, James!
+Getting your Proverb, James!
+Getting your Proverb, James!
+
+PROVERB CYCLE COMPLETED
+
+Switched mode, currently in Joke mode.
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+
+JOKE CYCLE COMPLETED
+
+Switched mode, currently in Proverb mode.
+Switched mode, currently in Joke mode.
+Switched mode, currently in Proverb mode.
+Getting your Proverb, James!
+Getting your Proverb, James!
+Getting your Proverb, James!
+Getting your Proverb, James!
+
+PROVERB CYCLE COMPLETED
+
+Switched mode, currently in Joke mode.
+
+***Secondary Server Interleaved***
+
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeServer secondary
+James Valles' Joke Server running.
+Server two: localhost, port 4546. JokeClientAdmin using port 5051.
+
+Started in Joke mode.
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+
+JOKE CYCLE COMPLETED
+
+Switched mode, currently in Proverb mode.
+Getting your Proverb, James!
+Getting your Proverb, James!
+Getting your Proverb, James!
+Getting your Proverb, James!
+Getting your Proverb, James!
+
+PROVERB CYCLE COMPLETED
+
+Switched mode, currently in Joke mode.
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, James!
+
+JOKE CYCLE COMPLETED
+
+
+
+***Starting up Primary & Secondary Servers***
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeServer
+James Valles' Joke Server running.
+Server one: localhost, port 4545. JokeClientAdmin using port 5050.
+
+Started in Joke mode.
+
+
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeServer secondary
+James Valles' Joke Server running.
+Server two: localhost, port 4546. JokeClientAdmin using port 5051.
+
+Started in Joke mode.
+
+
+
+
+***Starting up JokeClient with primary, secondary servers***
+
+Last login: Sun Apr 21 17:21:08 on ttys003
+Jamess-MacBook-Pro-3:~ jamesvalles$ cd desktop
+Jamess-MacBook-Pro-3:desktop jamesvalles$ cd jokeninja
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeClient localhost localhost
+James Valles' Joke Client
+Server one: localhost, port 4545. JokeClientAdmin running at port 5050.
+Server two: localhost, port 4546. JokeClientAdmin running at port 5051.
+
+Hi! Please enter your name to begin program.
+
+
+
+**Starting up JokeClientAdmin with primary, secondary servers***
+Last login: Sun Apr 21 17:22:16 on ttys004
+Jamess-MacBook-Pro-3:~ jamesvalles$ cd Desktop
+Jamess-MacBook-Pro-3:Desktop jamesvalles$ cd jokeninja
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeClientAdmin localhost localhost
+James Valles' JokeClientAdmin
+Server one: localhost, port 4545. JokeClientAdmin running at port 5050.
+Server two: localhost, port 4546. JokeClientAdmin running at port 5051.
+
+Press return key to switch modes, or 's' to toggle servers, or type 'quit' to terminate program.
+
+
+
+***Multiple Client 1
+
+JA James: How did the programmer die in the shower? He read the shampoo bottle instructions: Lather. Rinse. Repeat.
+
+JB James: Why do programmers always mix up Halloween and Christmas? Because Oct 31 equals Dec 25.
+
+
+***Multiple Client 2 
+Last login: Sun Apr 21 17:28:13 on ttys005
+Jamess-MacBook-Pro-3:~ jamesvalles$ cd desktop
+Jamess-MacBook-Pro-3:desktop jamesvalles$ cd jokeninja
+Jamess-MacBook-Pro-3:jokeninja jamesvalles$ java JokeClient localhost localhost
+James Valles' Joke Client
+Server one: localhost, port 4545. JokeClientAdmin running at port 5050.
+Server two: localhost, port 4546. JokeClientAdmin running at port 5051.
+
+Hi! Please enter your name to begin program.
+Nick
+
+To receive something always press return key, to toggle server type 's', or type 'quit' to exit program.
+
+JA Nick: How did the programmer die in the shower? He read the shampoo bottle instructions: Lather. Rinse. Repeat.
+
+JB Nick: Why do programmers always mix up Halloween and Christmas? Because Oct 31 equals Dec 25.
+
+
+
+***Mutiple Client Server 1
+Getting your Joke, James!
+Getting your Joke, James!
+Getting your Joke, Nick!
+Getting your Joke, Nick!
+
+
+
+ 
